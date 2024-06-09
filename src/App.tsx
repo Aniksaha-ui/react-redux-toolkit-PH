@@ -1,12 +1,8 @@
 import { Button } from "./components/ui/button";
+import Todo from "./pages/todo";
 
 function App() {
-  return (
-    <>
-      <p>Hello World</p>
-      <Button>My Button</Button>
-    </>
-  );
+  return <Todo />;
 }
 
 export default App;
