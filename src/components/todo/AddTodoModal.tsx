@@ -12,19 +12,23 @@ import { Label } from "@radix-ui/react-label";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { FormEvent, useState } from "react";
-import { useAppDispatch } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { addTodo } from "@/redux/features/todoSlice";
 
 const AddTodoModal = () => {
   const [task, setTask] = useState("");
   const [description, setDescription] = useState("");
   const dispatch = useAppDispatch();
+  // const { todos } = useAppSelector((state) => state.todo);
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
+    const randomTask = Math.random().toString(36).substring(2, 7);
     const taskDetails = {
+      id: randomTask,
       title: task,
       description: description,
     };
+
     dispatch(addTodo(taskDetails));
   };
   return (
